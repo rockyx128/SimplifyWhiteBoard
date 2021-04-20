@@ -1,0 +1,59 @@
+.inputs-wrapper {
+  color: #757575;
+  /* width: 400px; */
+  background-color: #fff;
+  user-select: none;
+}
+.input-wrapper {
+  display: flex;
+  height: 50px;
+}
+.input-wrapper + .input-wrapper {
+  border-top: 1px solid #ccc;
+}
+.prop {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 10px;
+}
+.input {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 0 15px;
+}
+input[type='range'],
+input[type='text'] {
+  width: 100%;
+}
+.range-text {
+  margin-left: 10px;
+}
+input[type='number'] {
+  width: 80px;
+}
+
+.input-select {
+  display: flex;
+  width: 100%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+.select-item {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: #fff;
+  color: #1b84ff;
+}
+.select-item + .select-item {
+  border-left: 1px solid#ccc;
+}
+.input-select > div.active {
+  background: #1b84ff;
+  color: #fff;
+}

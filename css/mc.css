@@ -1,0 +1,28 @@
+/* moveable custom css */
+.moveable-line {
+  background: rgb(0, 140, 255) !important;
+}
+.moveable-control {
+  margin-top: -5px !important;
+  margin-left: -5px !important;
+  width: 10px !important;
+  height: 10px !important;
+  background: #fff !important;
+  border: 1px solid rgb(0, 140, 255) !important;
+}
+.moveable-direction[data-direction='n'],
+.moveable-direction[data-direction='s'] {
+  cursor: n-resize !important;
+}
+.moveable-direction[data-direction='ne'],
+.moveable-direction[data-direction='sw'] {
+  cursor: ne-resize !important;
+}
+.moveable-direction[data-direction='e'],
+.moveable-direction[data-direction='w'] {
+  cursor: e-resize !important;
+}
+.moveable-direction[data-direction='se'],
+.moveable-direction[data-direction='nw'] {
+  cursor: se-resize !important;
+}
