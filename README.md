@@ -62,3 +62,29 @@ document.body.style.display='block'
 
 不应该啊, 到底是哪里的问题
 
+### shape-rendering 
+
+想要兼容PC  和 移动端 , 一劳永逸 , 想的美的很啊~ , 这可是要付出惨重的代价的, 真不如直接写一些个 移动版 和 PC 版 , 这不我们又碰到了 shape-rendering 在 PC 和 Mobile 双端表现不一致的情况
+
+要说 , 这个系统真是够可以的 这个 1px 问题, 设计的是个鬼啊 , 我就写 1px 就是 1px 得了, 结果我使用 svg 和 canvas 我还得 平移 0.5px, 我的乖乖, 这是要闹哪样啊 , 诚心不好好写是吧
+
+我忍!!!
+
+解决
+
+```js
+// 如果 dpr 为1 的时候, 我们就加入  shape-rendering :crispEdges
+// 如果 dpr 不为1 那就不为所动
+if (dpr === 1) {
+  let shaperending = document.createElement('style')
+
+  shaperending.textContent = `.axis line {shape-rendering: crispEdges;}`
+
+  document.head.appendChild(shaperending)
+}
+```
+
+
+
+
+

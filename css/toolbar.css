@@ -1,37 +1,27 @@
 .toolbar {
-  font-family: 16px;
-  position: fixed;
   top: 50%;
-  right: 10px;
+  right: 10rem;
   transform: translateY(-50%);
+  box-shadow: 0rem 0rem 10rem hsla(27, 100%, 71%, 0.5);
+  border: 1px solid hsl(27deg 100% 86%);
 }
-.toolbar .header {
-  border-bottom: 1px solid #ccc;
-  background-color: #ffffff;
-  cursor: move;
-  transition: 0.3s;
-  user-select: none;
+
+.toolbar .toolgrid {
+  background-color: hsl(27deg 100% 86%);
 }
-.toolbar .body {
+.toolbar .pheader__ {
+  background-color: hsl(30 100% 63% / 0.5);
+  border-bottom: 1px solid hsl(27deg 100% 86%);
+  height: 15px;
+}
+.toolbar .pheader__:hover {
+  background-color: hsl(30 100% 63% / 0.8);
+}
+.toolbar .pbody__ {
   display: flex;
   flex-wrap: wrap;
   position: relative;
   justify-content: flex-start;
-}
-.header:hover {
-  background-color: #e4e4e4;
-}
-
-.view {
-  color: #545454;
-  border: 1px solid #e4e4e4;
-  box-shadow: 0 1px 10px rgba(171, 171, 171, 0.38);
-  border-radius: 3px;
-  background-color: #fff;
-}
-
-.theader {
-  height: 15px;
 }
 
 .tool {
@@ -45,20 +35,20 @@
   user-select: none;
 }
 .tool.active {
-  background-color: #dfdfdf;
+  background-color: #fff !important;
 }
 .tool.active svg {
-  fill: #3d3d3d;
+  fill: hsl(22, 100%, 50%) !important;
 }
 .tool:hover {
   background-color: #f4f4f4;
 }
 .tool:hover svg {
-  fill: #545454;
+  fill: #ffaf6d;
 }
-.tool.active {
+/* .tool.active {
   background-color: hsl(0, 0%, 90%);
-}
+} */
 .tool.active > svg.active {
   fill: hsl(0, 0%, 25%);
 }

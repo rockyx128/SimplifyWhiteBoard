@@ -6,6 +6,9 @@ class SWBoard {
     // 生成图层 3个,并绑定
     this.initLayers()
 
+    // 生成 内置的 toolbar,并编写功能
+    this.initToolbarBuiltin()
+
     // 加入缩放
     this.onZoom()
 
@@ -26,6 +29,9 @@ class SWBoard {
     let r = Math.floor(dpr)
     this.bg = new SvgBG(this, 20 * r)
   }
+  initToolbarBuiltin() {
+    this.buildinToolbar = new Toolbar(buildinToolbarData)
+  }
   onZoom() {
     const zoom = d3
       .zoom()
@@ -35,7 +41,6 @@ class SWBoard {
       ])
       .scaleExtent([0.25, 6])
       .on('zoom', (e) => {
-        console.log(this.bg)
         let { xAxs, yAxs, xScale, yScale, xAxis, yAxis, unit } = this.bg
         let { x, y, k } = e.transform
         // console.log(e.transform, 'realPading', unit * e.transform.k)

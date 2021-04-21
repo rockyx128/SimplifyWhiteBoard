@@ -1,6 +1,8 @@
+// 近似相等
 const approximatelyEqual = (v1, v2, epsilon = 0.001) =>
   Math.abs(v1 - v2) < epsilon
 
+// 生成 和 设置 transform
 function trans(el, transObj) {
   if (!arguments.length) return
   if (!transObj) {
@@ -101,4 +103,127 @@ function trans(el, transObj) {
 
     return transform.trim()
   }
+}
+
+// 创建 dom
+function createDom({
+  styles,
+  className,
+  id,
+  text,
+  html,
+  tagName = 'div',
+  parent,
+  attrs,
+} = {}) {
+  const el = document.createElement(tagName)
+  if (isString(id)) el.id = id
+  // className 方式是 'abc bc cc'
+  if (isString(className)) el.className = className
+  // styles格式,就是css的写法格式
+  // width:100px;height:100px;position:absolute;
+  if (isString(styles)) el.style.cssText = styles
+  if (isString(text)) el.innerText = text
+  if (isString(html)) el.innerHTML = html
+  if (isObject(attrs)) {
+    for (let attr in attrs) {
+      el.setAttribute(attr, attrs[attr])
+    }
+  }
+  if (isElement(parent)) parent.appendChild(el)
+
+  return el
+}
+
+// 判断函数
+function isElement(el) {
+  return el && /Element$/.test(Object.prototype.toString.call(el).slice(8, -1))
+}
+
+function isString(str) {
+  return str && typeof str === 'string'
+}
+
+function isObject(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1) === 'Object'
+}
+
+// 这里我们不收集 body, html , Window , 因为这三个对于我们没啥用
+function getElPath(el) {
+  let arr = [el]
+  while (el.parentElement && el !== document.body) {
+    arr.push(el)
+    el = parentElement
+  }
+  return arr
+}
+
+// 从 parent 中找符合要求的 元素 , 没有就返回 false
+function findTargetFromParent(target, condition) {
+  while (target !== document.body) {
+    if (condition(target)) {
+      return target
+    }
+    target = target.parentElement
+  }
+  return false
+}
+
+// solo
+function soleElement({ elements, condition, matchfn, unMatchfn }) {
+  for (let i = 0, l = elements.length; i < l; i++) {
+    let el = elements[i]
+    if (condition(el)) {
+      console.log('matched', el)
+      matchfn(el)
+    } else {
+      console.log('unmatched', el)
+      unMatchfn(el)
+    }
+  }
+}
+
+// muti
+function mutiElement(elements, condition, matchfn) {
+  for (let i = 0, l = elements.length; i < l; i++) {
+    let el = elements[i]
+    if (condition(el)) {
+      matchfn(el)
+    }
+  }
+}
+
+// cancel select
+function onOff(flag) {
+  // 设置初始状态
+  return function (onfn, offfn) {
+    // 开关的状态设置为 关
+    // 后续效果就是 关灯效果 , off
+    flag = !flag
+    if (flag) {
+      offfn()
+    } else {
+      onfn()
+    }
+  }
+}
+
+function dragInRange(rect, range) {
+  let { x, y, width, height } = rect
+  let lx, ly
+  if (x < range.x) {
+    lx = range.x
+  } else if (x + width > range.x + range.width) {
+    lx = range.x + range.width - width
+  } else {
+    lx = x
+  }
+  if (y < range.y) {
+    ly = range.y
+  } else if (y + height > range.y + range.height) {
+    ly = range.y + range.height - height
+  } else {
+    ly = y
+  }
+  return [lx, ly]
 }

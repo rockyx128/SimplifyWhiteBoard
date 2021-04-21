@@ -1,14 +1,19 @@
 .panel__ {
-  font-family: 16px;
+  background-color: #ffffff;
+  font-size: 16rem;
   position: fixed;
   z-index: 100000;
-  box-shadow: 0 1px 10px rgb(171 171 171 / 38%);
+  box-shadow: 0 1rem 10rem rgba(171, 171, 171, 0.38);
+  border: 1px solid #e4e4e4;
+  color: #545454;
 }
 
 .pheader__ {
   border-bottom: 1px solid #ccc;
   background-color: #ffffff;
   cursor: move;
-  transition: 0.3s;
-  user-select: none;
+}
+
+.pheader__:hover {
+  background-color: #e4e4e4;
 }
