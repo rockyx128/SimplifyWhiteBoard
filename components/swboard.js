@@ -6,8 +6,8 @@ class SWBoard {
     // 生成图层 3个,并绑定
     this.initLayers()
 
-    // 生成 内置的 toolbar,并编写功能
-    this.initToolbarBuiltin()
+    // 生成 ColorPanel 并编写功能
+    this.initColorPanel()
 
     // 加入缩放
     this.onZoom()
@@ -30,7 +30,10 @@ class SWBoard {
     this.bg = new SvgBG(this, 20 * r)
   }
   initToolbarBuiltin() {
-    this.buildinToolbar = new Toolbar(buildinToolbarData)
+    this.buildinToolbar = new Toolbar(baseTools)
+  }
+  initColorPanel() {
+    this.colorPanel = new ColorPanel()
   }
   onZoom() {
     const zoom = d3

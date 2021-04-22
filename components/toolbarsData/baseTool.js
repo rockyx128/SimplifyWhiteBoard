@@ -1,6 +1,7 @@
-let buildinToolbarData = {
+let baseTools = {
   direction: 'hor', // 竖排 ver
   n: 1, // 没两个换一排
+  unit: toolUnit,
   tools: [
     // 预置一些 name 和 icon // 甚至我们可以内置 fn 函数
     // 问题是我们怎么把 editor 传递过来

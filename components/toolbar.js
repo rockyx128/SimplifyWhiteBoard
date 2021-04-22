@@ -1,11 +1,20 @@
 class Toolbar extends Panel {
-  constructor({ editor, direction, n = 1, tools, name, dragable = true }) {
+  constructor({
+    editor,
+    direction,
+    n = 1,
+    tools,
+    name,
+    dragable = true,
+    unit = 40,
+  }) {
     super({ dragable })
     // 这里不光我们可以初始化 toolbar , 给 toobar 配置功能
     // 更要做的是, 做一个 toolbar 的管理器 list
     // 我们要通过一个自定义的渲染得到一个合理的排布, 一个 合理的 Index
     // 我们默认就显示 最常用的 Toolbar
     // 布局是比较简单的, 就是一个 panel 的布局, pheader pbody
+    this.unit = unit
     this.editor = editor
     if (tools && tools.length) {
       let len = tools.length
@@ -35,11 +44,15 @@ class Toolbar extends Panel {
         }
       })
       if (direction === 'hor') {
-        tBody.style.cssText = `width:${getN(len, n) * 60}px;height:${n * 60}px;`
+        tBody.style.cssText = `width:${getN(len, n) * unit}rem;height:${
+          n * unit
+        }rem;`
         tBody.style['flex-direction'] = 'row'
         this.genGrid(getN(len, n), n)
       } else if (direction === 'ver') {
-        tBody.style.cssText = `height:${getN(len, n) * 60}px;width:${n * 60}px;`
+        tBody.style.cssText = `height:${getN(len, n) * unit}rem;width:${
+          n * unit
+        }rem;`
         tBody.style['flex-direction'] = 'column'
         this.genGrid(n, getN(len, n))
       }
@@ -78,9 +91,9 @@ class Toolbar extends Panel {
       for (let i = 1; i < w; i++) {
         let el = document.createElement('div')
         el.style.position = 'absolute'
-        el.style.left = i * 60 + 'px'
-        el.style.height = h * 60 + 'px'
-        el.style.width = '1px'
+        el.style.left = i * this.unit + 'rem'
+        el.style.height = h * this.unit + 'rem'
+        el.style.width = '1rem'
         el.className = 'toolgrid'
         this.body.appendChild(el)
       }
@@ -89,9 +102,9 @@ class Toolbar extends Panel {
       for (let i = 1; i < h; i++) {
         let el = document.createElement('div')
         el.style.position = 'absolute'
-        el.style.top = i * 60 + 'px'
-        el.style.width = w * 60 + 'px'
-        el.style.height = '1px'
+        el.style.top = i * this.unit + 'rem'
+        el.style.width = w * this.unit + 'rem'
+        el.style.height = '1rem'
         el.className = 'toolgrid'
         this.body.appendChild(el)
       }

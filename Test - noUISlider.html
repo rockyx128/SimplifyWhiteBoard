@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>noUISlider</title>
+    <link rel="stylesheet" href="./css/nouislider.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="rslider"></div>
+    <script src="./js/nouislider.min.js"></script>
+    <script>
+      let rSlider = document.querySelector('#rslider')
+      noUiSlider.create(rSlider, {
+        start: 0, // 初始值, 可以为一个数字,也可以为一个数组,代表多个按钮
+        step: 1, // 步进值, 不多说
+        range: {
+          min: 0,
+          max: 100,
+        },
+      })
+    </script>
+  </body>
+</html>

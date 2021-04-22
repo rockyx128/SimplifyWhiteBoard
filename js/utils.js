@@ -227,3 +227,12 @@ function dragInRange(rect, range) {
   }
   return [lx, ly]
 }
+
+// 我们知道nodelist 没法使用 forEach ,我们就自己写一个 forEach 吧
+function forEach(nodelist, fn) {
+  if (nodelist.length) {
+    for (let i = 0, l = nodelist.length; i < l; i++) {
+      fn(nodelist[i], i)
+    }
+  }
+}

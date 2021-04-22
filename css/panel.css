@@ -2,7 +2,7 @@
   background-color: #ffffff;
   font-size: 16rem;
   position: fixed;
-  z-index: 100000;
+  z-index: 1000;
   box-shadow: 0 1rem 10rem rgba(171, 171, 171, 0.38);
   border: 1px solid #e4e4e4;
   color: #545454;
@@ -16,4 +16,18 @@
 
 .pheader__:hover {
   background-color: #e4e4e4;
+}
+
+/*  color panle */
+.pcr-app {
+  z-index: 10000;
+}
+.pickr .pcr-button {
+  height: 20rem !important;
+  width: 20rem !important;
+  transition: none !important;
+}
+
+.pcr-result {
+  min-width: 90% !important;
 }

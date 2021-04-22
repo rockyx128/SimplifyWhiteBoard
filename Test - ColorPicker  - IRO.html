@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>IRO</title>
+  </head>
+  <body>
+    <div class="color-picker"></div>
+    <script src="./js/iro.min.js"></script>
+
+    <script>
+      var colorPicker = new iro.ColorPicker('.color-picker', {
+        //设置颜色选择器的大小
+        width: 320,
+        //将初始颜色设置为纯红色
+        color: '#f00',
+      })
+      // 挺不错的, 但是, 1px 问题解决不了!!!!
+    </script>
+  </body>
+</html>
